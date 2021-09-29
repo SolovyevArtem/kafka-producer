@@ -1,0 +1,33 @@
+spring:
+  kafka:
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: io.confluent.kafka.serializers.json.KafkaJsonSchemaSerializer
+    consumer:
+      group-id: template-cg
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: io.confluent.kafka.serializers.json.KafkaJsonSchemaDeserializer
+    properties:
+      schema.registry.url: http://localhost:8081
+
+server:
+  port: 8082
+
+
+
+  kafka:
+    consumer:
+      enable-auto-commit: false
+      bootstrap-servers: 127.0.0.1:9092
+      group-id: myTopic4
+      #auto-commit-interval: Integer.MAX_VALUE;
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: io.confluent.kafka.serializers.json.KafkaJsonSchemaDeserializer
+
+      properties:
+        schema.registry.url: http://localhost:8081
+        json.value.type: org/satel/reportgenerator/model/Incident.java
+
+dateFormatPattern: yyyy-MM-dd HH:mm:ss.SSS
